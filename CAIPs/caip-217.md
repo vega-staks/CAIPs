@@ -1,7 +1,7 @@
 ---
 caip: 217
 title: Authorization Scopes
-author: Pedro Gomes (@pedrouid), Hassan Malik (@hmalik88), Juan Caballero (@bumblefudge)
+author: Pedro Gomes (@pedrouid), Hassan Malik (@hmalik88), Bumblefudge (@bumblefudge)
 discussions-to: https://github.com/ChainAgnostic/CAIPs/discussions/217, https://github.com/ChainAgnostic/CAIPs/discussions/211
 status: Draft
 type: Standard
@@ -64,16 +64,10 @@ The syntax of a `scopeObject` is as follows:
 Where:
 
 - {`scopeString`} (conditional) = EITHER a namespace identifier string registered in the CASA [namespaces][] registry to authorize multiple chains with identical properties OR a single, valid [CAIP-2][] identifier, i.e., a specific `chain_id` within a namespace.
-- `scopes` (conditional) = An array of 0 or more [CAIP-2][] `chainId`s. For each
-  entry in `scopes`, all the other properties of the `scopeObject` apply, but in
-  some cases, such as when members of `accounts` are specific to 1 or more
-  chains in `scopes`, they may be ignored or filtered where inapplicable;
-  namespace-specific rules for organizing or interpreting properties in
-  multi-scope MAY be specified in a [namespace-specific profile][namespaces] of
-  this specification.
-  - This property MUST NOT be present if the object is already scoped to a single `chainId` in the string value above.
-  - This property MUST NOT be present if the scope is an entire [namespace][namespaces] in which `chainId`s are not defined.
-  - This property MAY be present if the scope is an entire [namespace][namespaces] in which `chainId`s are defined.
+- `scopes` (conditional), formerly `chains` = An array of 0 or more [CAIP-2][] `chainId`s. For each entry in `scopes`, all the other properties of the `scopeObject` apply, but in some cases, such as when members of `accounts` are specific to 1 or more chains in `scopes`, they may be ignored or filtered where inapplicable; namespace-specific rules for organizing or interpreting properties in multi-scope MAY be specified in a [namespace-specific profile][namespaces] of this specification.
+  - This property MUST NOT be present if the object is already scoped to a single `chainId` by the `scopeString` value above.
+  - This property MUST NOT be present if the scope is an entire [namespace][namespaces] in which no `chainId`s are defined or no [CAIP-2] profile has been published.
+  - This property SHOULD be present if the scope is an entire [namespace][namespaces] in which `chainId`s are defined. An empty `scopes` array MUST NOT be interpreted as authorizing an entire namespace in which a finite list of [CAIP-2] value could be set, but rather, as applying equal to zero members of that finite list until 1 or more of them are added to `scopes`.
 - `methods` = An array of 0 or more JSON-RPC methods that an application can call on the agent and/or an agent can call on an application.
 - `notifications` = An array of 0 or more JSON-RPC notifications that an application send to or expect from the agent.
 - `accounts` (optional) = An array of 0 or more [CAIP-10][] identifiers, each valid within the scope of authorization.
@@ -88,8 +82,16 @@ Whenever another CAIP uses the name `scopeObject` and has this CAIP in the
 `required` front-matter property, it SHALL be interpreted as reference to this
 specification.
 
-## References
+## Links
 
+- [CAIP-2][] - Blockchain ID Specification
+- [CAIP-10][] - Account ID Specification
+- [CAIP-25][]: https://chainAgnostic.org/CAIPs/CAIP-25
+- [CAIP-27][]: https://chainAgnostic.org/CAIPs/CAIP-27
+- [CAIP-211][]: https://chainAgnostic.org/CAIPs/CAIP-211
+- [Namespaces][namespaces]: https://namespaces.chainAgnostic.org/
+
+[CAIP-2]: https://chainAgnostic.org/CAIPs/CAIP-2
 [CAIP-10]: https://chainAgnostic.org/CAIPs/CAIP-10
 [CAIP-25]: https://chainAgnostic.org/CAIPs/CAIP-25
 [CAIP-27]: https://chainAgnostic.org/CAIPs/CAIP-27
