@@ -1,4 +1,4 @@
-# CAIPs
+4d9dd699469411c6e386508fe161320f4b1cbdc1# CAIPs
 
 Chain Agnostic Improvement Proposals (CAIPs) describe standards for blockchain projects that are not specific to a single chain.
 
@@ -19,3 +19,4 @@ Visit [chainagnostic.org](https://chainagnostic.org/) for the up-to-date index o
 Previously there were specific CAIPs for what is now referred to as *namespaces*. 
 Chain Agnostic [Namespaces](https://github.com/chainagnostic/namespaces) describe a blockchain ecosystem or set of ecosystems as a namespace, relying as much as possible on the CAIP specifications to minimize the research needed to interact with assets, contracts, and accounts in that namespace.
 Where a namespace has been accepted by the editors, the former CAIPs have been superseded and ongoing specification should be continued there.
+4d9dd699469411c6e386508fe161320f4b1cbdc1
