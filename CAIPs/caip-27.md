@@ -83,3 +83,4 @@ it will return a response with a success result or error message.
 ## Copyright
 
 Copyright and related rights waived via [CC0](../LICENSE).
+https://github.com/vega-staks/CAIPs/pull/2
